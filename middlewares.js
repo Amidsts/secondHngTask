@@ -20,10 +20,7 @@ function mailer(name) {
     const { MAILJET_PUBLIC_KEY, MAILJET_PRIVATE_KEY, MAILJET_SENDER_EMAIL  } =
       process.env
     if (!MAILJET_PUBLIC_KEY || !MAILJET_PRIVATE_KEY || !MAILJET_SENDER_EMAIL) {
-      res.status(500).json({
-        error: true,
-        message: 'A server error occured',
-      })
+      res.status(500).send('A server error occured')
     } else {
       res.mailer = (senderEmail, senderName) => {
         return axios.post(
